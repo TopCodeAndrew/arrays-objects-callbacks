@@ -27,7 +27,10 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+function first(array,callback) {
+    callback(array[0])
+}
+
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -47,7 +50,11 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+function last(arr, cb){
+  cb(arr[arr.length-1])
+}
+
+
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -65,7 +72,10 @@ last(names, function(lastName){
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+function multiply(num1, num2, cb){
+  cb(num1*num2)
+}
+
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -84,7 +94,39 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+// function contains (arr, name, cb) {
+//   for (i=0; i <= arr.length - 1; i++){
+
+//     if (arr[i] !== name){
+      
+//       if (i === arr.length - 1){
+//         cb(false)
+//       }
+      
+//     }else if (arr[i] === name){
+//       cb(true);
+//       break
+//     }
+
+//   }
+// }
+
+function contains (arr, name, cb) {
+  for (i=0; i <= arr.length - 1; i++){
+
+    if (arr[i] === name){
+      cb(true);
+      return
+    }
+  }
+  cb(false)
+}
+    
+
+
+
+
+
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -105,8 +147,23 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+// 1. Design how to test arr[i] against all variables after it (up till the end of arr) and delete any duplicates
 
+// 2. design how to test arr[i+1] against all variables after it (up till the end of arr)
+// 3. invoke the callback with the modified array as an argument
+
+function uniq(arr, cb){
+  for (i = 0; i <= arr.length -1; i++){
+    let j = i + 1;
+
+    for (j, j <= arr.length - 1, j++){
+      if (arr[i] === arr[j]){
+         arr.splice(arr[j],1);
+         j = j - 1;
+      }
+    }
+  }
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
